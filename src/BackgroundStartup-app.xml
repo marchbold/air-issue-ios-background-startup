@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<application xmlns="http://ns.adobe.com/air/application/50.2" >
+  <id>com.distriqt.test</id>
+  <versionNumber>1.0.0</versionNumber>
+  <filename>BackgroundStartup</filename>
+  <name>Background Startup</name>
+  <initialWindow>
+    <content>[]</content>
+    <visible>true</visible>
+    <fullScreen>false</fullScreen>
+    <autoOrients>false</autoOrients>
+    <renderMode>direct</renderMode>
+  </initialWindow>
+  <icon>
+    <image16x16>icons/icon16x16.png</image16x16>
+    <image29x29>icons/icon29x29.png</image29x29>
+    <image32x32>icons/icon32x32.png</image32x32>
+    <image36x36>icons/icon36x36.png</image36x36>
+    <image48x48>icons/icon48x48.png</image48x48>
+    <image57x57>icons/icon57x57.png</image57x57>
+    <image72x72>icons/icon72x72.png</image72x72>
+    <image114x114>icons/icon114x114.png</image114x114>
+    <image128x128>icons/icon128x128.png</image128x128>
+    <image512x512>icons/icon512x512.png</image512x512>
+  </icon>
+  <android>
+    <containsVideo>true</containsVideo>
+    <manifestAdditions><![CDATA[<manifest android:installLocation="auto" >
+  <uses-sdk android:minSdkVersion="21" android:targetSdkVersion="33"/>
+  <permission android:name="air.com.distriqt.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
+  <uses-permission android:name="air.com.distriqt.test.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+  <!-- Required permission for App measurement to run. -->
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+  <uses-permission android:name="android.permission.WAKE_LOCK"/>
+  <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE"/>
+  <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+  <!-- Required by older versions of Google Play services to create IID tokens -->
+  <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
+  <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+  <application android:appComponentFactory="androidx.core.app.CoreComponentFactory">
+    <meta-data android:name="android.max_aspect" android:value="2.5"/>
+    <meta-data android:name="android.notch_support" android:value="true"/>
+    <provider android:name="androidx.startup.InitializationProvider" android:authorities="air.com.distriqt.test.androidx-startup" android:exported="false">
+      <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+    </provider>
+    <receiver android:name="com.google.android.gms.measurement.AppMeasurementReceiver" android:enabled="true" android:exported="false"/>
+    <service android:name="com.google.android.gms.measurement.AppMeasurementService" android:enabled="true" android:exported="false"/>
+    <service android:name="com.google.android.gms.measurement.AppMeasurementJobService" android:enabled="true" android:exported="false" android:permission="android.permission.BIND_JOB_SERVICE"/>
+    <meta-data android:name="com.google.android.gms.version" android:value="@integer/google_play_services_version"/>
+    <activity android:name="com.google.android.gms.common.api.GoogleApiActivity" android:exported="false" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    <service android:name="com.google.firebase.components.ComponentDiscoveryService" android:exported="false">
+      <meta-data android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+    </service>
+    <receiver android:name="com.distriqt.extension.location.receivers.LocationReceiver" android:exported="false">
+      <intent-filter>
+        <action android:name="air.com.distriqt.test.LOCATION_UPDATE"/>
+      </intent-filter>
+    </receiver>
+    <service android:name="com.distriqt.extension.location.services.LocationUpdateService" android:enabled="true" android:exported="true" android:foregroundServiceType="location"/>
+    <receiver android:name="com.distriqt.extension.location.receivers.GeofenceTransitionReceiver" android:exported="false">
+      <intent-filter>
+        <action android:name="air.com.distriqt.test.GEOFENCE_TRANSITION_ACTION"/>
+      </intent-filter>
+    </receiver>
+    <receiver android:name="com.distriqt.extension.location.receivers.BootReceiver" android:exported="false">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        <action android:name="android.location.PROVIDERS_CHANGED"/>
+      </intent-filter>
+    </receiver>
+    <service android:name="com.distriqt.extension.location.services.GeofenceRestartService" android:exported="false"/>
+    <activity android:name="com.distriqt.extension.location.permissions.AuthorisationActivity" android:exported="false" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+    <activity android:name="com.distriqt.core.auth.AuthorisationActivity" android:exported="false" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+  </application>
+</manifest>
+]]></manifestAdditions>
+  </android>
+  <iPhone>
+    <requestedDisplayResolution>high</requestedDisplayResolution>
+    <InfoAdditions><![CDATA[
+<key>UIDeviceFamily</key>
+<array>
+  <string>1</string>
+  <string>2</string>
+</array>
+<key>MinimumOSVersion</key>
+<string>11.0</string>
+<key>UILaunchStoryboardName</key>
+<string>LaunchScreen</string>
+<key>UIBackgroundModes</key>
+<array>
+  <string>location</string>
+</array>
+<!-- Add this if your application needs location services to run -->
+<!-- 
+    <key>UIRequiredDeviceCapabilities</key>
+    <array>
+        <string>location-services</string>
+    </array> 
+    -->
+<!-- Required if you wish to receive background location updates -->
+<!-- 
+    <key>UIBackgroundModes</key>
+    <array>
+        <string>location</string>
+    </array> 
+    -->
+<!-- iOS 6,7 -->
+<key>NSLocationUsageDescription</key>
+<string>This application would like to use your location.</string>
+<!-- iOS 8 + -->
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>This application would like to use your location when in use.</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>This application would like to use your location in the background.</string>
+<!-- iOS 11 + -->
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>This application would like to use your location in the background and the foreground.</string>]]></InfoAdditions>
+    <Entitlements/>
+  </iPhone>
+  <extensions>
+    <extensionID>androidx.core</extensionID>
+    <extensionID>com.distriqt.Core</extensionID>
+    <extensionID>com.distriqt.Location</extensionID>
+    <extensionID>com.distriqt.playservices.Base</extensionID>
+    <extensionID>com.distriqt.playservices.Location</extensionID>
+    <extensionID>com.jetbrains.kotlin</extensionID>
+  </extensions>
+</application>

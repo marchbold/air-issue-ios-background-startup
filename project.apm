@@ -1,0 +1,38 @@
+{
+    "identifier": "com.distriqt.test",
+    "name": "Background Startup",
+    "filename": "BackgroundStartup",
+    "version": "1.0.0",
+    "versionLabel": "",
+    "platforms": [],
+    "dependencies": [
+        {
+            "version": "5.0.0",
+            "id": "com.distriqt.Location"
+        }
+    ],
+    "configuration": {
+        "locationAlwaysAndWhenInUseUsageDescription": {
+            "name": "locationAlwaysAndWhenInUseUsageDescription",
+            "required": "true",
+            "value": "This application would like to use your location in the background and the foreground."
+        },
+        "locationAlwaysUsageDescription": {
+            "name": "locationAlwaysUsageDescription",
+            "required": "true",
+            "value": "This application would like to use your location in the background."
+        },
+        "locationUsageDescription": {
+            "name": "locationUsageDescription",
+            "required": "true",
+            "value": "This application would like to use your location."
+        },
+        "locationWhenInUseUsageDescription": {
+            "name": "locationWhenInUseUsageDescription",
+            "required": "true",
+            "value": "This application would like to use your location when in use."
+        }
+    },
+    "repositories": [],
+    "deployOptions": {}
+}

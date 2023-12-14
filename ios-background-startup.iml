@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="Flex" version="4">
+  <component name="FlexBuildConfigurationManager" active="ios-background-startup">
+    <configurations>
+      <configuration name="ios-background-startup" target-platform="Mobile" pure-as="true" main-class="Main" output-file="Main.swf" output-folder="$MODULE_DIR$/out/production/ios-background-startup">
+        <dependencies target-player="32.0">
+          <entries>
+            <entry library-id="3ec76b84-4db4-45f4-915a-c63bdff42a4e">
+              <dependency linkage="Merged" />
+            </entry>
+          </entries>
+          <sdk name="AIRSDK_50.2.4" />
+        </dependencies>
+        <compiler-options />
+        <packaging-air-desktop />
+        <packaging-android package-file-name="Main" />
+        <packaging-ios enabled="true" use-generated-descriptor="false" custom-descriptor-path="$MODULE_DIR$/src/BackgroundStartup-app.xml" package-file-name="Main">
+          <files-to-package>
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/src/icons" path-in-package="icons" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/src/Assets.car" path-in-package="Assets.car" />
+            <FilePathAndPathInPackage file-path="$MODULE_DIR$/src/LaunchScreen.storyboardc" path-in-package="LaunchScreen.storyboardc" />
+          </files-to-package>
+          <AirSigningOptions keystore-path="$USER_HOME$/Drive/work/certs/distriqt/development/Certificates.p12" provisioning-profile-path="$USER_HOME$/Drive/work/certs/com.distriqt.test/development/distriqt_test_profile.mobileprovision" />
+        </packaging-ios>
+      </configuration>
+    </configurations>
+    <compiler-options />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
+    </content>
+    <orderEntry type="jdk" jdkName="AIRSDK_50.2.4" jdkType="Flex SDK Type (new)" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" exported="">
+      <library type="flex">
+        <properties id="3ec76b84-4db4-45f4-915a-c63bdff42a4e" />
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/ane" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+        <jarDirectory url="file://$MODULE_DIR$/ane" recursive="false" />
+      </library>
+    </orderEntry>
+  </component>
+</module>
