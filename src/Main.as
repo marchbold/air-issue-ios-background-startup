@@ -1,5 +1,6 @@
 package
 {
+	import com.distriqt.extension.core.Core;
 	import com.distriqt.extension.location.AuthorisationStatus;
 	import com.distriqt.extension.location.Location;
 	import com.distriqt.extension.location.events.AuthorisationEvent;
@@ -46,6 +47,8 @@ package
 
 			_logTextField.width = stage.stageWidth;
 			_logTextField.height = stage.stageHeight;
+
+			Core.init();
 
 			if (Location.isSupported)
 			{
